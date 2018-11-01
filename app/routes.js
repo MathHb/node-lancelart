@@ -265,20 +265,19 @@ router.post('/cadastro', function(req, ress) {
 					ress.render('pages/cadastro', {message: "Algo deu errado! Por favor, tente novamente."})
 				}
 			} else {
-				console.log(res.rows[0])
 					//console.log(res.rows[0])
 					ress.render('pages/cadastro', {message:"Dados cadastrados, você já pode fazer login!"})
 					fs.mkdirSync(path.dirname(__dirname) + '/public/img/' + res.rows[0].id.toString())
 					fs.mkdirSync(path.dirname(__dirname) + '/public/img/' + res.rows[0].id.toString()+ '/thumbs')
-						if (req.body.contaTp == true){
-							var orgmk = {
-								name: 'org-make',
-								text: 'INSERT INTO public.organizacao (usuario) VALUES ($1)',
-								values:[res.rows[0].id]
+					if (req.body.contaTp == true){
+						var orgmk = {
+							name: 'org-make',
+							text: 'INSERT INTO public.organizacao (usuario) VALUES ($1)',
+							values:[res.rows[0].id]
 
-							}
-							pool.query(orgmk)
 						}
+						pool.query(orgmk)
+					}
 
 
 				}
@@ -406,11 +405,14 @@ router.post('/delete/:flnm', function (req,res){
 })
 
 router.post('/orgdata', function (req,res){
-	var orgdata = {
+	var orgdata = 
+	{
 		name: 'org-data',
 		text: 'INSERT INTO public.organizacao(email, telefone, local, nome, usuario) VALUES ( $1, $2, $3, $4, $5) RETURNING *',
 		values: [req.body.orgmail, req.body.orgtel, req.body.orgloc,req.body.orgnome, req.session.key],
 		rowMode: 'array',
 	}
+
+	
 })
 
