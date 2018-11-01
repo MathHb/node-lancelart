@@ -1,0 +1,21 @@
+<% contentFor('hero') %>
+
+<h3>Bem vindo de volta!</h3>
+<%include ../partials/messages%>
+
+<% contentFor('body') %>
+
+<form action="/login" method="POST">
+    <div class="form-group">
+        <label>login</label>
+    	    <input type="text" name="login" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>senha</label>
+        <input type="password" name="senha" class="form-control">
+    </div>
+    
+    <div class="form-group text-right">
+          <button type="submit" class="btn btn-primary btn-lg">Login!</button>
+    </div>
+</form>

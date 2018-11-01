@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" href="../public/img/favicon.bmp" type="image/x-icon" />
+	<link rel="stylesheet" href="/css/bootstrap.css">   
+	<link rel="stylesheet" href="/css/styles.css">
+	<script src="js/load-image.all.min.js"></script>
+	<title>Lancelart</title>
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-inverse">
+			<a href="/" class="navbar-brand">Lancelart</a>
+			<ul class="navbar-nav navbar ">
+				<li><a href="/" charset="" lass="nav">Pagina Inicial</a></li>
+				<li><a href="/about">Sobre</a></li>
+				<li><a href="/cadastro">Cadastro</a></li>
+				<li><a href="/login">Conta</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<%- defineContent('hero') %>
+
+
+	<main>
+		<div class="container">
+			<%- body %>
+		</div>
+	</main>
+
+	<footer>
+		Site criado para TCC de Análise e desenvolvimento de sistemas. 2018 Fatec Americana.
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<%- contentFor('hero') %>
+<%include ../partials/messages%>
+<form action="/userarea/edit" method="POST">
+  <div>
+  <div>
+    <label>Nome</label>
+    <input type="text" name="nomeEd" value="<%=nome%>">
+  </div>
+  <div>
+    <label>Email</label>
+    <input type="text" name="emailEd" value="<%=email%>">
+  </div>
+  <div>
+    <label>senha</label>
+    <input type="text" name="senhaEd" value="<%=pwd%>">
+  </div>
+    <div>
+    <input type="checkbox" name="area" value="Desenho Digital 2D"><label>Desenho Digital 2D</label>
+    <input type="checkbox" name="area" value="Desenho Digital 3D"><label>Desenho Digital 3D</label>
+    <input type="checkbox" name="area" value="Desenho Tradicional"><label>Desenho Tradicional</label>
+    <input type="checkbox" name="area" value="Modelagem"><label>Modelagem</label>
+    <input type="checkbox" name="area" value="Fotografia"><label>Fotografia</label>
+    <input type="checkbox" name="area" value="Colagem"><label>Colagem</label>
+    <input type="checkbox" name="area" value="Escultura"><label>Escultura</label>
+  </div>
+  <div class="align-right">
+    <button class="btn btn-lg" type="submit">Mudar dados</button>
+  </div>
+<div class="pull-right">
+  <a href="/logout">
+    <button type="button" class="btn btn-lg">Sair da conta</button>
+  </a>
+</div>
+</div>
+</form>
+
+<%- contentFor('body') %>
+
+<div>
+  <%if(tp) { %>	<h2>Info</h2> <% } else { %> <h2>Bio</h2> <% } %>
+  <form action="/texto" method="POST">
+   <div>
+    <textarea name="texto"><%=tex%></textarea> 
+  </div>
+  <div>
+    <button type="submit" class="btn btn-lg">Alterar</button>
+  </div>
+</form>
+</div>
+
+<form method='post' action='/upload' enctype='multipart/form-data'> 
+	<input type='file' name='image' accept=".jpg, .png, .gif, .bmp, .jpeg" /> 
+	<button type="submit">Adicionar foto!</button>
+</form>
+
+<div>
+  <%-imhtml%>
+</div>
+
+<%if(tp) { %>
+<div class="jumbotron">
+  <h3>Organização</h3>
+  <div>
+    <form method="POST" action="/orgdata">
+      <input type='file' name='avorg' accept=".jpg, .png, .gif, .bmp, .jpeg" /> 
+      <button type="submit">Avatar</button>
+      <input type="text" name="orgmail" value="<%=orgmail%>">
+      <input type="text" name="orgtel" value="<%=orgtel%>">
+      <input type="text" name="orgloc" value="<%=orgloc%>">
+      <input type="text" name="orgnome" value="<%=orgnome%>">
+    </form>
+  </div>
+  <h3>Requisições</h3>
+</div>
+<% } else { %>
+
+<div class="container jumbotron">
+  <h2>Trabalhos</h2>
+  <div class="col-xs-6">
+    <form method="POST" action="/trab:1">
+
+    </form>
+  </div>
+  <div class="col-xs-6">
+    <form method="POST" action="/trab:2">
+
+    </form>
+  </div>
+  <div class="col-xs-6">
+    <form method="POST" action="/trab:3">
+
+    </form>
+  </div>
+  <div class="col-xs-6">
+    <form method="POST" action="/trab:4">
+
+    </form>
+  </div>
+  <div class="col-xs-6">
+    <form method="POST" action="/trab:5">
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+<% } %>
+

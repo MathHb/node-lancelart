@@ -1,0 +1,47 @@
+<%- contentFor('hero') %>
+<%include ../partials/messages%>
+<form action="/userarea/edit" method="POST">
+  <div>
+    <label>Nome</label>
+    <input type="text" name="nomeEd" value="<%=nome%>">
+  </div>
+  <div>
+    <label>Email</label>
+    <input type="text" name="emailEd" value="<%=email%>">
+  </div>
+  <div>
+    <label>senha</label>
+    <input type="text" name="senhaEd" value="<%=pwd%>">
+  </div>
+  <div class="align-right">
+  <button class="btn btn-lg" type="submit">Mudar dados</button>
+  </div>
+</form>
+
+<%- contentFor('body') %>
+
+<div>
+	<h2>Biografia</h2>
+    <form action="/biografia" method="POST">
+    	<div>
+          <textarea name="texto"><%=tex%></textarea> 
+        </div>
+        <div>
+          <button type="submit" class="btn btn-lg">Alterar</button>
+        </div>
+    </form>
+</div>
+
+<a href="/logout">
+	<button type="button" class="btn btn-lg">Sair da conta</button>
+</a>
+
+<form method='post' action='/upload' enctype='multipart/form-data'> 
+	<input type='file' name='image' accept=".jpg, .png, .gif, .bmp, .jpeg" /> 
+	<button type="submit">Adicionar foto!</button>
+</form>
+
+<div>
+  <%-imhtml%>
+</div>
+
