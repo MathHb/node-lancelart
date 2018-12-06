@@ -4,12 +4,11 @@ var pg = require('./db'),
 	ejs = require('ejs'),
 	express = require('express'),
 	bb = require('express-busboy'),
-	auth = require('./auth'),
 	cookieParser = require('cookie-parser'),
 	session = require('express-session')
-    //flash = require('express-flash');
 
 
+    //auth = require('./auth')
 //Usar o express, variável de porta e inicialização de sessão(ambiente de desenvolvimento)
 var	app = express();
 var port = process.env.PORT || 8080;

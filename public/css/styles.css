@@ -31,7 +31,7 @@ header .navbar {
 }
 
 .hero-content p {
-  color: #36823e;
+  color: #000;
   font-size: 40px;
   margin-bottom: 30px;
 }
@@ -39,6 +39,7 @@ header .navbar {
 .hero-content .btn {
   border-radius: 2px;
   padding: 20px 30px;
+  color:#000;
 }  
 
 main {
@@ -64,3 +65,51 @@ footer {
   width:100%;
 }
 
+.pedtxt {
+  width: inherit;
+  border:5px solid yellow;
+  background-color: white;
+  padding: 2px;
+}
+
+.trabspace {
+  display:inline-grid;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.menitem{
+  border-left: 2px solid #57d686;
+  color: #000 ;
+  font-size: 22px
+}
+
+.lancelogo{
+  font-size:25px;
+}
+
+a {
+  color:black;
+}
+
+.jumbotron{
+  background-color:#abe29e;
+}
+
+.sitebtn{
+  display: inherit; 
+  border:2px solid green; 
+  background-color: #eaea98;
+}
+
+.pedbox{
+}
+
+label {
+  font-size: 17px;
+  font-family: verdana;
+}
+
+textarea{
+  resize: none;
+}

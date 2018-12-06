@@ -2,110 +2,160 @@
 <%include ../partials/messages%>
 <form action="/userarea/edit" method="POST">
   <div>
-  <div>
-    <label>Nome</label>
-    <input type="text" name="nomeEd" value="<%=nome%>">
-  </div>
-  <div>
-    <label>Email</label>
-    <input type="text" name="emailEd" value="<%=email%>">
-  </div>
-  <div>
-    <label>senha</label>
-    <input type="text" name="senhaEd" value="<%=pwd%>">
-  </div>
     <div>
-    <input type="checkbox" name="area" value="Desenho Digital 2D"><label>Desenho Digital 2D</label>
-    <input type="checkbox" name="area" value="Desenho Digital 3D"><label>Desenho Digital 3D</label>
-    <input type="checkbox" name="area" value="Desenho Tradicional"><label>Desenho Tradicional</label>
-    <input type="checkbox" name="area" value="Modelagem"><label>Modelagem</label>
-    <input type="checkbox" name="area" value="Fotografia"><label>Fotografia</label>
-    <input type="checkbox" name="area" value="Colagem"><label>Colagem</label>
-    <input type="checkbox" name="area" value="Escultura"><label>Escultura</label>
+      <label>Nome</label>
+      <input type="text" name="nomeEd" value="<%=nome%>">
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="text" name="emailEd" value="<%=email%>">
+    </div>
+    <div>
+      <label>senha</label>
+      <input type="text" name="senhaEd" value="<%=pwd%>">
+    </div>
+    <%if(!tp){%>
+      <label>redes sociais</label>
+      <input type="text" name="redsocEd" value="<%redsoc%>">
+    <%}%>
+    <div>
+      <input type="checkbox" name="area" value="Desenho Digital 2D"><label>Desenho Digital 2D</label>
+      <input type="checkbox" name="area" value="Desenho Digital 3D"><label>Desenho Digital 3D</label>
+      <input type="checkbox" name="area" value="Desenho Tradicional"><label>Desenho Tradicional</label>
+      <input type="checkbox" name="area" value="Modelagem"><label>Modelagem</label>
+      <input type="checkbox" name="area" value="Fotografia"><label>Fotografia</label>
+      <input type="checkbox" name="area" value="Colagem"><label>Colagem</label>
+      <input type="checkbox" name="area" value="Escultura"><label>Escultura</label>
+    
+    </div>
+ 
+    <div class="" style="display: inline-block;">
+      <button class="btn btn-lg" style="display: " type="submit">Mudar dados</button>
+    </div>
+    <div class="" style="display: inline-block;">
+      <a href="/logout">
+        <button type="button"  class="btn btn-lg">Sair da conta</button>
+      </a>
+      </div>
+    
   </div>
-  <div class="align-right">
-    <button class="btn btn-lg" type="submit">Mudar dados</button>
-  </div>
-<div class="pull-right">
-  <a href="/logout">
-    <button type="button" class="btn btn-lg">Sair da conta</button>
-  </a>
-</div>
-</div>
 </form>
 
-<%- contentFor('body') %>
-
 <div>
-  <%if(tp) { %>	<h2>Info</h2> <% } else { %> <h2>Bio</h2> <% } %>
+  <%if(tp) { %> <h2>Info</h2> <% } else { %> <h2>Bio</h2> <% } %>
   <form action="/texto" method="POST">
    <div>
-    <textarea name="texto"><%=tex%></textarea> 
+    <textarea cols="100" rows='20' name="texto"><%=tex%></textarea> 
   </div>
   <div>
     <button type="submit" class="btn btn-lg">Alterar</button>
   </div>
 </form>
 </div>
+<%- contentFor('body') %>
 
-<form method='post' action='/upload' enctype='multipart/form-data'> 
-	<input type='file' name='image' accept=".jpg, .png, .gif, .bmp, .jpeg" /> 
-	<button type="submit">Adicionar foto!</button>
-</form>
 
-<div>
-  <%-imhtml%>
-</div>
 
-<%if(tp) { %>
+<%if(tp == true) { %>
 <div class="jumbotron">
   <h3>Organização</h3>
   <div>
-    <form method="POST" action="/orgdata">
-      <input type='file' name='avorg' accept=".jpg, .png, .gif, .bmp, .jpeg" /> 
-      <button type="submit">Avatar</button>
+    <form method='post' action='/orgdata' enctype='multipart/form-data'> 
+      <label>Email</label>
       <input type="text" name="orgmail" value="<%=orgmail%>">
+      <label>Telefone</label>
       <input type="text" name="orgtel" value="<%=orgtel%>">
+      <label>Local</label>
       <input type="text" name="orgloc" value="<%=orgloc%>">
+      <label>Nome</label>
       <input type="text" name="orgnome" value="<%=orgnome%>">
+      <button type="submit">MUDAR DADOS</button>
     </form>
   </div>
   <h3>Requisições</h3>
+  <form method="POST" action="/novopedido">
+    <textarea  name="pedtexto" class="delbt"></textarea>
+    <button type="submit">Novo pedido!</button>
+  </form>
+
+  <%-pedlista%>
+
 </div>
 <% } else { %>
 
 <div class="container jumbotron">
   <h2>Trabalhos</h2>
-  <div class="col-xs-6">
-    <form method="POST" action="/trab:1">
-
+  <h4>Trabalho Principal</h4>
+  <label>Título</label>
+  <div class="trabspace">
+    <form method="POST" action="/userpage/texch/0">
+      <input type="text" value="<%=trabtex[0][1]%>" name="trabte1" ><button type="submit">Mudar título</button>
     </form>
-  </div>
-  <div class="col-xs-6">
-    <form method="POST" action="/trab:2">
+    <form method="POST" action="/userpage/trabup/0" enctype="multipart/form-data">
 
-    </form>
-  </div>
-  <div class="col-xs-6">
-    <form method="POST" action="/trab:3">
 
-    </form>
-  </div>
-  <div class="col-xs-6">
-    <form method="POST" action="/trab:4">
+     <label> <input type="file" accept="image/*" name="trabinpt0"></label>
+    <button type="submit">Adicionar Imagem ao trabalho</button>
+   </form>
 
-    </form>
-  </div>
-  <div class="col-xs-6">
-    <form method="POST" action="/trab:5">
+ </div>
+ <h5>Trabalho 2</h5>
+ <label>Título</label>
+ <div class="trabspace">
+  <form method="POST" action="/userpage/texch/1">
+    <input type="text" value="<%=trabtex[1][1]%>" name="trabte2" ><button type="submit">Mudar título</button>
+  </form>
+  <form method="POST" action="/userpage/trabup/1" enctype="multipart/form-data">
 
-    </form>
-  </div>
+
+   <label> <input type="file" accept="image/*" name="trabinpt1"></label>
+  <button type="submit">Adicionar Imagem ao trabalho</button>
+ </form>
+
 </div>
+<h5>Trabalho 3</h5>
+<label>Título</label>
+<div class="trabspace">
+  <form method="POST" action="/userpage/texch/2">
+    <input type="text" value="<%=trabtex[2][1]%>" name="trabte3" ><button type="submit">Mudar título</button>
+  </form>
+  <form method="POST" action="/userpage/trabup/2" enctype="multipart/form-data">
 
 
+   <label> <input type="file" accept="image/*" name="trabinpt2"></label>
+  <button type="submit">Adicionar Imagem ao trabalho</button>
+ </form>
+
+</div>
+<h5>Trabalho 4</h5>
+<label>Título</label>
+<div class="trabspace">
+  <form method="POST" action="/userpage/texch/3">
+    <input type="text" value="<%=trabtex[3][1]%>" name="trabte4" ><button type="submit">Mudar título</button>
+  </form>
+  <form method="POST" action="/userpage/trabup/3" enctype="multipart/form-data">
 
 
+   <label> <input type="file" accept="image/*" name="trabinpt3"></label>
+  <button type="submit">Adicionar Imagem ao trabalho</button>
+ </form>
+
+</div>
+<h5>Trabalho 5</h5>
+<label>Título</label>
+<div class="trabspace">
+  <form method="POST" action="/userpage/texch/4">
+    <input type="text" value="<%=trabtex[4][1]%>" name="trabte5" ><button type="submit">Mudar título</button>
+  </form>
+  <form method="POST" action="/userpage/trabup/4" enctype="multipart/form-data">
+
+
+    <label>  <input type="file" accept="image/*" name="trabinpt4"></label>
+  <button type="submit">Adicionar Imagem ao trabalho</button>
+  </form>
+
+</div>
+</div>
 
 <% } %>
 

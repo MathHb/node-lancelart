@@ -2,15 +2,29 @@
 
 <div>
 	<h2><%=nome%></h2>
-	<h4><%=tp%></h4>
+	<%if(ctp){%><h3>Contratador</h3><%}else{%><h3>Artista</h3><%}%>
+
 </div>
 
 <%- contentFor('body') %>
 
 <div>
-	<h4><%=txttp%></h4>
+	<%if(ctp){%><h4>Contratador</h4><%}else{%><h4>Artista</h4><%}%>
 	<label><%=texto%></label>
 </div>
+
 <div>
-	<%-img%>
+	<%if(ctp){%>
+	<h5>Email</h5>
+	<label><%=orgmail%></label> <br>
+	<h5>Telefone</h5>
+	<label><%=orgtel%></label> <br>
+	<h5>Local</h5>
+	<label><%=orgloc%></label> <br>
+	<h5>Nome</h5>
+	<label><%=orgnome%></label> <br>
+	<%}else{%>
+		<label><%=bio%></label>
+		<label><%=redsoc%></label>
+	<%}%>
 </div>
